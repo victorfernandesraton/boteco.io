@@ -24,7 +24,7 @@ export class Pice {
     if (typeof left != "number" || typeof right != "number") {
       throw new InvalidPeaceError();
     }
-    if ((left < 1 && left > 6) || (right < 1 && right > 6)) {
+    if (left < 1 || left > 6 || right < 1 || right > 6) {
       throw new OfPeaceRangeError();
     }
 
