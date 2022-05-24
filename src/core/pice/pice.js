@@ -31,6 +31,27 @@ export class Pice {
     return this.same;
   }
 
+  /**
+   *
+   * @param {Pice} anotherPice
+   * @returns {string}
+   */
+  connectTo(anotherPice) {
+    if (
+      anotherPice.getLeft() === this.getRight() ||
+      anotherPice.getRight() === this.getRight()
+    ) {
+      return this.isSame() ? "both" : "right";
+    } else if (
+      anotherPice.getLeft() === this.getLeft() ||
+      anotherPice.getRight() === this.getLeft()
+    ) {
+      return this.isSame() ? "both" : "left";
+    } else {
+      return "none";
+    }
+  }
+
   static create(left, right) {
     if (typeof left != "number" || typeof right != "number") {
       throw new InvalidPeaceError();

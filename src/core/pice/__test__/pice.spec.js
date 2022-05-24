@@ -25,6 +25,29 @@ describe("Pice", () => {
     expect(pice.getKey()).toEqual(`0:4`);
   });
 
+  test("should be a pice connect in left another", () => {
+    const pice = Pice.create(1, 4);
+    const anotherPice = Pice.create(0, 1);
+    expect(pice.connectTo(anotherPice)).toEqual("left");
+  });
+
+  test("should be a pice connect in right another", () => {
+    const pice = Pice.create(1, 4);
+    const anotherPice = Pice.create(4, 1);
+    expect(pice.connectTo(anotherPice)).toEqual("right");
+  });
+
+  test("should be a pice connect in both side", () => {
+    const pice = Pice.create(4, 4);
+    const anotherPice = Pice.create(4, 1);
+    expect(pice.connectTo(anotherPice)).toEqual("both");
+  });
+
+  test("should be a pice not connect", () => {
+    const pice = Pice.create(1, 4);
+    const anotherPice = Pice.create(3, 6);
+    expect(pice.connectTo(anotherPice)).toEqual("none");
+  });
   test("should throw beccause one of values exced a valid kehy", () => {
     expect(() => Pice.create(4, 7)).toThrowError(OfPeaceRangeError);
     expect(() => Pice.create(7, 4)).toThrowError(OfPeaceRangeError);
