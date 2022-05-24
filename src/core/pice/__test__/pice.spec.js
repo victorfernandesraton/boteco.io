@@ -6,6 +6,7 @@ describe("Pice", () => {
     expect(pice.getLeft()).toEqual(1);
     expect(pice.getRight()).toEqual(4);
     expect(pice.isSame()).toBeFalsy();
+    expect(pice.getKey()).toEqual(`1:4`);
   });
 
   test("should be create a same pice like", () => {
@@ -13,6 +14,7 @@ describe("Pice", () => {
     expect(pice.getLeft()).toEqual(4);
     expect(pice.getRight()).toEqual(4);
     expect(pice.isSame()).toBeTruthy();
+    expect(pice.getKey()).toEqual(`4:4`);
   });
 
   test("should be create and balance left and right", () => {
@@ -20,6 +22,7 @@ describe("Pice", () => {
     expect(pice.getLeft()).toEqual(0);
     expect(pice.getRight()).toEqual(4);
     expect(pice.isSame()).toBeFalsy();
+    expect(pice.getKey()).toEqual(`0:4`);
   });
 
   test("should throw beccause one of values exced a valid kehy", () => {

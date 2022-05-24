@@ -6,11 +6,17 @@ export class Pice {
     if (left > right) {
       this.left = right;
       this.right = left;
+      this.key = `${right}:${left}`;
     } else {
       this.left = left;
       this.right = right;
+      this.key = `${left}:${right}`;
     }
     this.same = left === right;
+  }
+
+  getKey() {
+    return this.key;
   }
 
   getLeft() {
