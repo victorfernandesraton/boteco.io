@@ -19,6 +19,15 @@ export class Pice {
     return this.key;
   }
 
+  /**
+   * @returns {Array<number>}
+   */
+  getPairs() {
+    return this.getKey()
+      .split(":")
+      .map((item) => parseInt(item, 10));
+  }
+
   getLeft() {
     return this.left;
   }
@@ -37,6 +46,9 @@ export class Pice {
    * @returns {string}
    */
   connectTo(anotherPice) {
+    if (!anotherPice) {
+      return "none";
+    }
     if (
       anotherPice.getLeft() === this.getRight() ||
       anotherPice.getRight() === this.getRight()
@@ -52,6 +64,17 @@ export class Pice {
     }
   }
 
+  /**
+   *
+   * @param {string} key
+   */
+  static createFromString(key) {
+    const [right, left] = key
+      .split(":")
+      .sort()
+      .map((item) => parseInt(item, 10));
+    return Pice.create(left, right);
+  }
   static create(left, right) {
     if (typeof left != "number" || typeof right != "number") {
       throw new InvalidPeaceError();

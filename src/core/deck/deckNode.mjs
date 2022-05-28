@@ -4,8 +4,8 @@ export class DeckNode {
   /**
    *
    * @param {Pice} node
-   * @param {string} parent
-   * @param {string} child
+   * @param {string?} parent
+   * @param {string?} child
    */
   constructor(node, parent, child) {
     this.node = node;
