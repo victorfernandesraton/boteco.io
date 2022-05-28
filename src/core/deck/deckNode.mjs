@@ -1,4 +1,4 @@
-import { Pice } from "../pice/pice";
+import { Pice } from "../pice/pice.mjs";
 
 export class DeckNode {
   /**

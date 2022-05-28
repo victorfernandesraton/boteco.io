@@ -1,6 +1,6 @@
-import { NotValidPiceToAppendInDeck } from "../errors/notValidPiceToAppendInDeck";
-import { Pice } from "../pice/pice";
-import { DeckNode } from "./deckNode";
+import { NotValidPiceToAppendInDeck } from "../errors/notValidPiceToAppendInDeck.mjs";
+import { Pice } from "../pice/pice.mjs";
+import { DeckNode } from "./deckNode.mjs";
 
 export class Deck {
   /**

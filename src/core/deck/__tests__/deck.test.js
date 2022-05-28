@@ -1,6 +1,5 @@
-const { Pice } = require("src/core/pice/pice");
-const { Deck } = require("../deck");
-
+import { Pice } from "../../pice/pice.mjs";
+import { Deck } from "../deck.mjs";
 describe("deck.js", () => {
   it("shoud be a simple game", () => {
     const rootPice = Pice.create(6, 6);

@@ -1,5 +1,5 @@
-import { OfPeaceRangeError } from "src/core/errors/ofPeaceRangeError";
-import { Pice } from "../pice";
+import { OfPeaceRangeError } from "../../errors/ofPeaceRangeError.mjs";
+import { Pice } from "../pice.mjs";
 describe("Pice", () => {
   test("should be create a single pice", () => {
     const pice = Pice.create(1, 4);

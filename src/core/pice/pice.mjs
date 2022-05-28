@@ -1,5 +1,5 @@
-import { InvalidPeaceError } from "../errors/invalidPeaceError";
-import { OfPeaceRangeError } from "../errors/ofPeaceRangeError";
+import { InvalidPeaceError } from "../errors/invalidPeaceError.mjs";
+import { OfPeaceRangeError } from "../errors/ofPeaceRangeError.mjs";
 
 export class Pice {
   constructor(left, right) {
