@@ -4,8 +4,8 @@ export class DeckNode {
   /**
    *
    * @param {Pice} node
-   * @param {Pice} parent
-   * @param {Pice} child
+   * @param {string} parent
+   * @param {string} child
    */
   constructor(node, parent, child) {
     this.node = node;
@@ -36,8 +36,8 @@ export class DeckNode {
   /**
    *
    * @param {Pice} node
-   * @param {Pice?} parent
-   * @param {Pice?} child
+   * @param {string?} parent
+   * @param {string?} child
    */
   static create(node, parent, child) {
     return new DeckNode(node, parent, child);

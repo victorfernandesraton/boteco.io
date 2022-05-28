@@ -11,24 +11,24 @@ describe("deck.js", () => {
     const firstPice = Pice.create(1, 6);
     const secondLeftPice = Pice.create(1, 3);
 
-    deck.push(firstPice);
+    deck.push(firstPice.getKey());
     expect(deck.getLeft().getKey()).toEqual("1:6");
     expect(deck.getRight().getKey()).toEqual("6:6");
     expect(deck.getRoot().getNode().getKey()).toEqual("6:6");
 
-    deck.push(secondLeftPice);
+    deck.push(secondLeftPice.getKey());
     expect(deck.getLeft().getKey()).toEqual("1:3");
     expect(deck.getRight().getKey()).toEqual("6:6");
     expect(deck.getRoot().getNode().getKey()).toEqual("6:6");
 
     const thirdPice = Pice.create(5, 3);
-    deck.push(thirdPice);
+    deck.push(thirdPice.getKey());
     expect(deck.getLeft().getKey()).toEqual("3:5");
     expect(deck.getRight().getKey()).toEqual("6:6");
     expect(deck.getRoot().getNode().getKey()).toEqual("6:6");
 
     const fourthPice = Pice.create(6, 0);
-    deck.push(fourthPice);
+    deck.push(fourthPice.getKey());
 
     expect(deck.getLeft().getKey()).toEqual("3:5");
     expect(deck.getRight().getKey()).toEqual("0:6");

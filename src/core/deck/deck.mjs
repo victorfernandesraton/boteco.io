@@ -10,8 +10,8 @@ export class Deck {
    */
   constructor(root) {
     this.root = root;
-    this.pices = new Array(28);
-    this.pices.push(root);
+    this.pices = new Map();
+    this.pices.set(root.getNode().getKey(), root);
     this.left = root.node;
     this.right = root.node;
   }
@@ -41,46 +41,48 @@ export class Deck {
   }
   /**
    *
-   * @param {Pice} piceString
+   * @param {string} piceKey
    */
-  push(pice) {
+  push(picekey) {
+    const [right, left] = picekey
+      .split(":")
+      .sort()
+      .map((item) => parseInt(item, 10));
+    const pice = Pice.create(left, right);
     const connectRight = this.right.connectTo(pice);
     const connectLeft = this.left.connectTo(pice);
 
-    const piceNode = DeckNode.create(pice);
-    let tempPices;
     if (["left", "right", "both"].includes(connectLeft)) {
-      tempPices = this.pices.filter(
-        (item) => item.getNode().getKey() !== this.left.getKey()
-      );
-      piceNode.changeParent(this.left);
-      tempPices.unshift(
-        DeckNode.create(this.left, tempPices?.[0]?.getNode?.(), pice)
-      );
-      tempPices.unshift(piceNode);
-      this.pices = tempPices;
-      this.left = pice;
+      this.pusher(pice, "left");
       return;
     }
 
     if (["left", "right", "both"].includes(connectRight)) {
-      tempPices = this.pices.filter(
-        (item) => item.getNode().getKey() !== this.right.getKey()
-      );
-      piceNode.changeParent(this.right);
-      tempPices.push(piceNode);
-      tempPices.push(
-        DeckNode.create(
-          this.right,
-          tempPices?.[tempPices.length - 1]?.getNode?.(),
-          pice
-        )
-      );
-      this.pices = tempPices;
-      this.right = pice;
+      this.pusher(pice, "right");
       return;
     }
 
     throw NotValidPiceToAppendInDeck();
+  }
+
+  /**
+   *
+   * @param {Pice} pice
+   * @param {string} parentKey
+   */
+  pusher(pice, parentKey) {
+    const parentPice = parentKey === "left" ? this.getLeft() : this.getRight();
+    const piceNode = DeckNode.create(pice, parentPice.getKey());
+    const previous = this.pices.get(parentPice.getKey()).getParent();
+    this.pices.set(pice.getKey(), piceNode);
+    this.pices.set(
+      parentPice.getKey(),
+      DeckNode.create(parentPice, previous, pice.getKey())
+    );
+    if (parentKey == "left") {
+      this.left = pice;
+    } else {
+      this.right = pice;
+    }
   }
 }
