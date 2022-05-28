@@ -1,5 +1,4 @@
 import { Pice } from "../pice/pice.mjs";
-import { DeckNode } from "./deckNode.mjs";
 
 export class DeckRoot {
   /**
@@ -16,10 +15,6 @@ export class DeckRoot {
     if (right) {
       this.right = right;
     }
-  }
-
-  changeleft(pice) {
-    this.left = pice;
   }
 
   getLeft() {

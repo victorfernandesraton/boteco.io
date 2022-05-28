@@ -1,3 +1,4 @@
+import { InvalidPeaceError } from "../../errors/invalidPeaceError.mjs";
 import { OfPeaceRangeError } from "../../errors/ofPeaceRangeError.mjs";
 import { Pice } from "../pice.mjs";
 describe("Pice", () => {
@@ -56,5 +57,10 @@ describe("Pice", () => {
   test("should throw beccause one of values is lower a valid kehy", () => {
     expect(() => Pice.create(4, -1)).toThrowError(OfPeaceRangeError);
     expect(() => Pice.create(-1, 4)).toThrowError(OfPeaceRangeError);
+  });
+
+  test("should throw beccause use invalid values", () => {
+    expect(() => Pice.create("4", 1)).toThrowError(InvalidPeaceError);
+    expect(() => Pice.create(1, [])).toThrowError(InvalidPeaceError);
   });
 });
