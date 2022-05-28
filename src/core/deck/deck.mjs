@@ -88,7 +88,7 @@ export class Deck {
       }
       this.right = pice.getPairs().find((item) => item != this.getRight());
     } else {
-      throw NotValidPiceToAppendInDeck();
+      throw new NotValidPiceToAppendInDeck();
     }
   }
 
