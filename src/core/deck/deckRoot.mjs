@@ -1,6 +1,9 @@
 import { Pice } from "../pice/pice.mjs";
 
 export class DeckRoot {
+  #node;
+  #left;
+  #right;
   /**
    *
    * @param {Pice} node
@@ -8,25 +11,25 @@ export class DeckRoot {
    * @param {string} right
    */
   constructor(node, left, right) {
-    this.node = node;
+    this.#node = node;
     if (left) {
-      this.left = left;
+      this.#left = left;
     }
     if (right) {
-      this.right = right;
+      this.#right = right;
     }
   }
 
   getLeft() {
-    return this.left;
+    return this.#left;
   }
 
   getRight() {
-    return this.right;
+    return this.#right;
   }
 
   getNode() {
-    return this.node;
+    return this.#node;
   }
 
   /**
