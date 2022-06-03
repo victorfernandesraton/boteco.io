@@ -1,15 +1,30 @@
 import { Deck } from "../deck/deck.mjs";
 import { InvalidPlayersListError } from "../errors/invalidPlayersListError.mjs";
 import { Pice } from "../pice/pice.mjs";
+import { Player } from "../player/player.mjs";
 
 export class Domino {
   #deck;
   #players = new Map();
   #moves = new Array();
 
+  /**
+   *
+   * @param {Deck?} deck
+   * @param {Player[]?} players
+   */
   constructor(deck, players) {
-    this.#deck = deck;
-    this.#players = players;
+    if (players.length > 4) {
+      throw new InvalidPlayersListError();
+    }
+    if (deck) {
+      this.#deck = deck;
+    }
+    if (players) {
+      for (const player in players) {
+        this.#appendInternalPlayer(player);
+      }
+    }
   }
 
   /**
