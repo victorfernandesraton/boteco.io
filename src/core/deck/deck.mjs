@@ -77,17 +77,17 @@ export class Deck {
     if (pice.getKey().includes(`${this.getLeft()}`)) {
       if (!this.getRoot().getLeft()) {
         this.#root.left = pice;
-        this.updateOnPush(pice, true, true);
+        this.#updateOnPush(pice, true, true);
       } else {
-        this.updateOnPush(pice, true, false);
+        this.#updateOnPush(pice, true, false);
       }
       this.#left = pice.getPairs().find((item) => item != this.getLeft());
     } else if (pice.getKey().includes(`${this.getRight()}`)) {
       if (!this.getRoot().getRight()) {
         this.#root.right = pice;
-        this.updateOnPush(pice, false, true);
+        this.#updateOnPush(pice, false, true);
       } else {
-        this.updateOnPush(pice, false, false);
+        this.#updateOnPush(pice, false, false);
       }
       this.#right = pice.getPairs().find((item) => item != this.getRight());
     } else {
@@ -101,7 +101,7 @@ export class Deck {
    * @param {boolean} isLeft
    * @param {boolean} isRoot
    */
-  updateOnPush(pice, isLeft, isRoot) {
+  #updateOnPush(pice, isLeft, isRoot) {
     const parent = isRoot
       ? this.getRoot().getNode()
       : Pice.createFromString(
