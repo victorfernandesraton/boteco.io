@@ -2,21 +2,25 @@ import { InvalidPeaceError } from "../errors/invalidPeaceError.mjs";
 import { OfPeaceRangeError } from "../errors/ofPeaceRangeError.mjs";
 
 export class Pice {
+  #left;
+  #right;
+  #key;
+  #same;
   constructor(left, right) {
     if (left > right) {
-      this.left = right;
-      this.right = left;
-      this.key = `${right}:${left}`;
+      this.#left = right;
+      this.#right = left;
+      this.#key = `${right}:${left}`;
     } else {
-      this.left = left;
-      this.right = right;
-      this.key = `${left}:${right}`;
+      this.#left = left;
+      this.#right = right;
+      this.#key = `${left}:${right}`;
     }
-    this.same = left === right;
+    this.#same = left === right;
   }
 
   getKey() {
-    return this.key;
+    return this.#key;
   }
 
   /**
@@ -29,15 +33,15 @@ export class Pice {
   }
 
   getLeft() {
-    return this.left;
+    return this.#left;
   }
 
   getRight() {
-    return this.right;
+    return this.#right;
   }
 
   isSame() {
-    return this.same;
+    return this.#same;
   }
 
   /**
